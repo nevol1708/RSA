@@ -104,17 +104,17 @@ public class RSACryp {
 		int choose = scanner.nextInt();
 		// lưu bản băm vào file
 		if (choose == 1) {
-			String md5digest = digest.md5Digest(encrypted);
+			String md5digest = digest.md5Digest(msg);
 			System.out.println("MD5 digest: " + md5digest);
 			out.write(md5digest);
 		}
 		else if (choose == 2) {
-			String sha1digest = digest.sha1Digest(encrypted);
+			String sha1digest = digest.sha1Digest(msg);
 			System.out.println("SHA-1 digest: " + sha1digest);
 			out.write(sha1digest);
 		}
 		else if (choose == 3) {
-			String sha256digest = digest.sha256Digest(encrypted);
+			String sha256digest = digest.sha256Digest(msg);
 			System.out.println("SHA-256 digest: " + sha256digest);
 			out.write(sha256digest);
 		}
