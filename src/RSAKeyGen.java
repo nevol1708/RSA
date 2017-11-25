@@ -12,18 +12,18 @@ public class RSAKeyGen {
 	private KeyPair keyPair;
 	private PrivateKey privateKey;
 	private PublicKey publicKey;
-	
-	//	3.1 Sinh bộ khóa theo thuật toán RSA
+
+	// 3.1 Sinh bộ khóa theo thuật toán RSA
 	public RSAKeyGen(int keysize) throws NoSuchAlgorithmException {
 		keyGen = KeyPairGenerator.getInstance("RSA");
 		keyGen.initialize(keysize);
 		// sinh cặp khóa
 		keyPair = keyGen.generateKeyPair();
 		privateKey = keyPair.getPrivate();
-		publicKey = keyPair.getPublic();	
+		publicKey = keyPair.getPublic();
 	}
-	
-	//	3.2 Lưu bộ khóa ra file
+
+	// 3.2 Lưu bộ khóa ra file
 	public void writeKeyToFile(String path) throws IOException {
 		File fpub = new File(path + "PublicKey");
 		File fpri = new File(path + "PrivateKey");
@@ -36,7 +36,7 @@ public class RSAKeyGen {
 		fos.flush();
 		fos.close();
 	}
-	
+
 	public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
 		RSAKeyGen rsa = new RSAKeyGen(1024);
 		rsa.writeKeyToFile("D:/");

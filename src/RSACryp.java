@@ -90,7 +90,7 @@ public class RSACryp {
 		System.out.println("Plain Text: " + msg);
 		String encrypted = rsa.encryptText(msg, rsa.getPrivateKey());
 		System.out.println("Encrypted Text: " + encrypted);
-		//	lưu bản mã vào file
+		// lưu bản mã vào file
 		File encryptedMesage = new File("D:/EncryptedMessage");
 		encryptedMesage.createNewFile();
 		FileWriter fw = new FileWriter(encryptedMesage, false);
@@ -98,24 +98,22 @@ public class RSACryp {
 		out.write(encrypted);
 		out.newLine();
 		out.flush();
-		//	băm bản rõ
+		// băm bản rõ
 		System.out.println("Choose digest method:");
 		System.out.println("1. MD5, 2. SHA-1, 3. SHA-256");
 		Scanner scanner = new Scanner(System.in);
 		int choose = scanner.nextInt();
-		//	lưu bản băm vào file
+		// lưu bản băm vào file
 		String digestmsg = "";
 		if (choose == 1) {
 			digestmsg = digest.md5Digest(msg);
 			System.out.println("MD5 digest: " + digestmsg);
 			out.write(digestmsg);
-		}
-		else if (choose == 2) {
+		} else if (choose == 2) {
 			digestmsg = digest.sha1Digest(msg);
 			System.out.println("SHA-1 digest: " + digestmsg);
 			out.write(digestmsg);
-		}
-		else if (choose == 3) {
+		} else if (choose == 3) {
 			digestmsg = digest.sha256Digest(msg);
 			System.out.println("SHA-256 digest: " + digestmsg);
 			out.write(digestmsg);
@@ -132,21 +130,19 @@ public class RSACryp {
 		String decrypted = rsa.decryptText(encryptedmsg, rsa.getPublicKey());
 		System.out.println("Decrypted Text From File: " + decrypted);
 		// băm lại bản rõ
-		String digestdecypt ="";
+		String digestdecypt = "";
 		if (choose == 1) {
 			digestdecypt = digest.md5Digest(decrypted);
 			System.out.println("MD5 digest of Decrypted: " + digestdecypt);
-		}
-		else if (choose == 2) {
+		} else if (choose == 2) {
 			digestdecypt = digest.sha1Digest(decrypted);
 			System.out.println("SHA-1 digest of Decrypted: " + digestdecypt);
-		}
-		else if (choose == 3) {
+		} else if (choose == 3) {
 			digestdecypt = digest.sha256Digest(decrypted);
 			System.out.println("SHA-256 digest of Decrypted: " + digestdecypt);
 		}
-		//	so sánh hai bản băm để xác nhận tính toàn vẹn
-		if(digestdecypt.equals(digestedmsg))
+		// so sánh hai bản băm để xác nhận tính toàn vẹn
+		if (digestdecypt.equals(digestedmsg))
 			System.out.println("Data Match");
 		else
 			System.out.println("Data Un-Match");
